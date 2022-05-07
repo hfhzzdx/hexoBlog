@@ -4,16 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>个人博客</title>
+  <title>CentOS/RHEL Linux安装EPEL第三方软件源 | 个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="我的博客系统">
-<meta property="og:type" content="website">
-<meta property="og:title" content="个人博客">
-<meta property="og:url" content="https://github.com/hfhzzdx/index.html">
+  <meta name="description" content="CentOS&#x2F;RHEL Linux安装EPEL第三方软件源 [toc] EPEL（Extra Packages for Enterprise Linux） 是由 Fedora 社区打造，为 RHEL 及衍生发行版如 CentOS等提供高质量软件包的项目。装上了 EPEL，就像在 Fedora 上一样，可以通过 yum install 软件包名，即可安装很多以前需要编译安装的软件、常用的软">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS&#x2F;RHEL Linux安装EPEL第三方软件源">
+<meta property="og:url" content="https://github.com/hfhzzdx/2022/05/06/CentOS-RHEL-Linux%E5%AE%89%E8%A3%85EPEL%E7%AC%AC%E4%B8%89%E6%96%B9%E8%BD%AF%E4%BB%B6%E6%BA%90/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="我的博客系统">
+<meta property="og:description" content="CentOS&#x2F;RHEL Linux安装EPEL第三方软件源 [toc] EPEL（Extra Packages for Enterprise Linux） 是由 Fedora 社区打造，为 RHEL 及衍生发行版如 CentOS等提供高质量软件包的项目。装上了 EPEL，就像在 Fedora 上一样，可以通过 yum install 软件包名，即可安装很多以前需要编译安装的软件、常用的软">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-05-06T22:33:54.000Z">
+<meta property="article:modified_time" content="2022-05-07T06:37:35.254Z">
 <meta property="article:author" content="HFH">
+<meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/hfhzzdx/atom.xml" title="个人博客" type="application/atom+xml">
@@ -75,9 +78,7 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-CentOS-RHEL-Linux安装EPEL第三方软件源" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-CentOS-RHEL-Linux安装EPEL第三方软件源" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/hfhzzdx/2022/05/06/CentOS-RHEL-Linux%E5%AE%89%E8%A3%85EPEL%E7%AC%AC%E4%B8%89%E6%96%B9%E8%BD%AF%E4%BB%B6%E6%BA%90/" class="article-date">
   <time class="dt-published" datetime="2022-05-06T22:33:54.000Z" itemprop="datePublished">2022-05-07</time>
@@ -94,8 +95,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/hfhzzdx/2022/05/06/CentOS-RHEL-Linux%E5%AE%89%E8%A3%85EPEL%E7%AC%AC%E4%B8%89%E6%96%B9%E8%BD%AF%E4%BB%B6%E6%BA%90/">CentOS/RHEL Linux安装EPEL第三方软件源</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      CentOS/RHEL Linux安装EPEL第三方软件源
     </h1>
   
 
@@ -105,11 +106,23 @@
       
         <h1 id="CentOS-x2F-RHEL-Linux安装EPEL第三方软件源"><a href="#CentOS-x2F-RHEL-Linux安装EPEL第三方软件源" class="headerlink" title="CentOS&#x2F;RHEL Linux安装EPEL第三方软件源"></a>CentOS&#x2F;RHEL Linux安装EPEL第三方软件源</h1><p> [toc]</p>
 <p><a target="_blank" rel="noopener" href="https://www.vpser.net/manage/centos-rhel-linux-third-party-source-epel.html">EPEL</a>（Extra Packages for Enterprise Linux） 是由 Fedora 社区打造，为 RHEL 及衍生发行版如 CentOS等提供高质量软件包的项目。装上了 EPEL，就像在 Fedora 上一样，可以通过 yum install 软件包名，即可安装很多以前需要编译安装的软件、常用的软件或一些比较流行的软件，比如现在流行的nginx、htop、ncdu、vnstat、axel、cmake3、libsodium-devel等等软件包&#x2F;依赖包，都可以使用EPEL很方便的安装更新。</p>
-        
-          <p class="article-more-link">
-            <a href="/hfhzzdx/2022/05/06/CentOS-RHEL-Linux%E5%AE%89%E8%A3%85EPEL%E7%AC%AC%E4%B8%89%E6%96%B9%E8%BD%AF%E4%BB%B6%E6%BA%90/#more">Read More</a>
-          </p>
-        
+<span id="more"></span>
+<h2 id="安装EPEL源"><a href="#安装EPEL源" class="headerlink" title="安装EPEL源"></a>安装EPEL源</h2><p>目前可以直接通过执行命令： <strong>yum install epel-release</strong> 直接进行安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sed -i <span class="string">&quot;s@^#baseurl=http://download.fedoraproject.org/pub@baseurl=http://mirrors.aliyun.com@g&quot;</span> /etc/yum.repos.d/epel*.repo</span><br><span class="line"></span><br><span class="line">sed -i <span class="string">&quot;s@^metalink@#metalink@g&quot;</span> /etc/yum.repos.d/epel*.repo</span><br><span class="line"></span><br><span class="line">sed -i <span class="string">&quot;s@^#baseurl=http://download.example/pub@baseurl=http://mirrors.aliyun.com@g&quot;</span> /etc/yum.repos.d/epel*.repo</span><br><span class="line"></span><br><span class="line">sed -i <span class="string">&quot;s@^metalink@#metalink@g&quot;</span> /etc/yum.repos.d/epel*.repo</span><br></pre></td></tr></table></figure>
+
+<p>如果是CentOS 8，请务必将前面两条命令里面的http都改成https。</p>
+<p>如果前面命令无法安装epel-release可以尝试以下方法</p>
+<h3 id="CentOS-x2F-RHEL-5"><a href="#CentOS-x2F-RHEL-5" class="headerlink" title="CentOS&#x2F;RHEL 5"></a>CentOS&#x2F;RHEL 5</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-5.noarch.rpm</span><br></pre></td></tr></table></figure>
+
+<h3 id="CentOS-x2F-RHEL-6"><a href="#CentOS-x2F-RHEL-6" class="headerlink" title="CentOS&#x2F;RHEL 6"></a>CentOS&#x2F;RHEL 6</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm</span><br></pre></td></tr></table></figure>
+
+<h3 id="CentOS-x2F-RHEL-7"><a href="#CentOS-x2F-RHEL-7" class="headerlink" title="CentOS&#x2F;RHEL 7"></a>CentOS&#x2F;RHEL 7</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</span><br></pre></td></tr></table></figure>
+
+<h3 id="CentOS-x2F-RHEL-8"><a href="#CentOS-x2F-RHEL-8" class="headerlink" title="CentOS&#x2F;RHEL 8"></a>CentOS&#x2F;RHEL 8</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm</span><br></pre></td></tr></table></figure>
+
+<p>Ok，如果不报错的话，epel源就安装完毕。</p>
+<p><strong>使用EPEL源安装软件</strong>现在就可以执行：yum install 软件包名进行安装了，nginx、htop、ncdu、vnstat等等一些常用的软件都灰常简单的装上了。</p>
+
       
     </div>
     <footer class="article-footer">
@@ -122,98 +135,19 @@
     </footer>
   </div>
   
-</article>
-
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-Linux命令速查手册" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/hfhzzdx/2022/05/05/Linux%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E6%89%8B%E5%86%8C/" class="article-date">
-  <time class="dt-published" datetime="2022-05-05T02:07:18.000Z" itemprop="datePublished">2022-05-05</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/hfhzzdx/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>►<a class="article-category-link" href="/hfhzzdx/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/Linux/">Linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/hfhzzdx/2022/05/05/Linux%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E6%89%8B%E5%86%8C/">Linux命令速查手册</a>
-    </h1>
+    <a href="/hfhzzdx/2022/05/05/Linux%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E6%89%8B%E5%86%8C/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">Linux命令速查手册</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h4 id="系统信息"><a href="#系统信息" class="headerlink" title="系统信息"></a>系统信息</h4>
-        
-          <p class="article-more-link">
-            <a href="/hfhzzdx/2022/05/05/Linux%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E6%89%8B%E5%86%8C/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://github.com/hfhzzdx/2022/05/05/Linux%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E6%89%8B%E5%86%8C/" data-id="cl2suhusx00003dxie4451q6w" data-title="Linux命令速查手册" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hfhzzdx/tags/Linux/" rel="tag">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hfhzzdx/tags/%E5%91%BD%E4%BB%A4/" rel="tag">命令</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-
-  
-    <article id="post-跟我一起学Python" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/hfhzzdx/2022/05/04/%E8%B7%9F%E6%88%91%E4%B8%80%E8%B5%B7%E5%AD%A6Python/" class="article-date">
-  <time class="dt-published" datetime="2022-05-04T23:00:07.000Z" itemprop="datePublished">2022-05-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/hfhzzdx/2022/05/04/%E8%B7%9F%E6%88%91%E4%B8%80%E8%B5%B7%E5%AD%A6Python/">跟我一起学Python</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://github.com/hfhzzdx/2022/05/04/%E8%B7%9F%E6%88%91%E4%B8%80%E8%B5%B7%E5%AD%A6Python/" data-id="cl2snuqvi0000xdxi9w5qf3z3" data-title="跟我一起学Python" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
 </section>
