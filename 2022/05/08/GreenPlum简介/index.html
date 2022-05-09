@@ -4,8 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="跟我一起学Python, HFH">
-    <meta name="description" content="">
+    <meta name="keywords" content="GreenPlum简介, HFH">
+    <meta name="description" content="GreenPlum简介GP属于OLAP
+OLTPOLTP（On-Line Transaction Processing，联机事务处理）系统：也称为生产系统，它是事件驱动的、面向应用的，比如电子商务网站的交易系统就是一个典型的OLTP系统。
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +21,7 @@
 
     
 
-    <title>跟我一起学Python | HFH</title>
+    <title>GreenPlum简介 | HFH</title>
     <link rel="icon" type="image/png" href="/hfhzzdx/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/hfhzzdx/libs/awesome/css/all.min.css">
@@ -265,12 +267,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/hfhzzdx/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/hfhzzdx/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">跟我一起学Python</h1>
+                    <h1 class="description center-align post-title">GreenPlum简介</h1>
                 </div>
             </div>
         </div>
@@ -384,12 +386,33 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/hfhzzdx/tags/GreenPlum/">
+                                <span class="chip bg-color">GreenPlum</span>
+                            </a>
+                        
+                            <a href="/hfhzzdx/tags/GP/">
+                                <span class="chip bg-color">GP</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/hfhzzdx/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                数据库
+                            </a>
+                        
+                            <a href="/hfhzzdx/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/GP/" class="post-category">
+                                GP
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -398,7 +421,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-05-05
+                    2022-05-09
                 </div>
                 
 
@@ -422,7 +445,216 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1 id="GreenPlum简介"><a href="#GreenPlum简介" class="headerlink" title="GreenPlum简介"></a>GreenPlum简介</h1><p><strong>GP属于OLAP</strong></p>
+<h6 id="OLTP"><a href="#OLTP" class="headerlink" title="OLTP"></a>OLTP</h6><p><strong>OLTP（On-Line Transaction Processing，联机事务处理）系统</strong>：也称为生产系统，它是事件驱动的、面向应用的，比如电子商务网站的交易系统就是一个典型的OLTP系统。</p>
+<p>　　OLTP的基本特点：</p>
+<pre class="line-numbers language-none"><code class="language-none">1. 数据在系统中产生
+2. 基于交易的处理系统（Transaction-Based）
+3. 每次交易牵涉的数据量很小
+4. 对响应时间要求非常高
+5. 用户数量非常庞大，主要是操作人员
+6. 数据库的各种操作主要基于索引进行<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h6 id="OLAP"><a href="#OLAP" class="headerlink" title="OLAP"></a>OLAP</h6><p><strong>OLAP（On-Line Analytical Processing，联机分析处理）系统</strong>：是基于数据仓库的信息分析处理过程，是数据仓库的用户接口部分。是跨部门的、面向主题的。</p>
+<p>　　OLAP的基本特点是：</p>
+<pre class="line-numbers language-none"><code class="language-none">1. 本身不产生数据，其基础数据来源于生产系统中的操作数据（OperationalData）
+2. 基于查询的分析系统
+3. 复杂查询经常使用夺标联结、全表扫描等，牵涉的数据量往往十分庞大
+4. 响应时间与具体查询有很大关系
+5. 用户数量相对较小，其用户主要是业务人员与管理人员
+6. 优于业务问题不固定，数据库的各种操作不能完全基于索引进行<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="GP架构"><a href="#GP架构" class="headerlink" title="GP架构"></a>GP架构</h4><img src="https://img-blog.csdnimg.cn/20200709190825924.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1MjYwODc1,size_16,color_FFFFFF,t_70" alt="img" style="zoom:67%;" />
+
+
+
+<p>Greenplum 由三部分组成：<font color=red>Mastert、Segment、Interconnect。</font></p>
+<p>(1)  master</p>
+<blockquote>
+<ul>
+<li>访问系统的入口</li>
+<li>数据库侦听进程 (postgres)</li>
+<li>处理所有用户连接</li>
+<li>建立查询计划explain</li>
+<li>协调工作处理过程</li>
+<li>管理工具</li>
+<li>系统目录表和元数据（数据字典）</li>
+<li>不存放任何用户数据，所以性能瓶颈不在Master节点上</li>
+</ul>
+</blockquote>
+<p>(2)  segment</p>
+<blockquote>
+<ul>
+<li>每个Segment存放一部分数据，数据根据分布键来分布</li>
+<li>一个gp集群可以有多个Segment</li>
+<li>用户不能直接访问Segment</li>
+<li>所有对Segment的访问都经过 Master</li>
+<li>数据库监听进程(postgres)监听来自 Master 的连接</li>
+</ul>
+</blockquote>
+<p>(3) interconnect</p>
+<blockquote>
+<ul>
+<li>reenplum 数据库之间的连接层</li>
+<li>进程间协调和管理</li>
+<li>基于千兆以太网架构，官网推荐万兆网</li>
+<li>属于系统内部私网配置</li>
+<li>支持两种协议：TCP or UDP</li>
+</ul>
+</blockquote>
+<p><em>在缺省情况下,interconnect(网络层)使用UDPIFC协议.  这是经过改善的UDP协议,在UDP协议的基础上增强了数据包检验,其可靠性与TCP协议相似,但其性能和扩展性远好与TCP协议. 当集群规模较小,网络的稳定性较差的时候,如果UDPIFC协议会遭遇一些故障,可以考虑使用TCP协议. 例如只有几十台主机时. 通常还是强烈建议配置稳定的网络环境,使用UPDIFC协议</em></p>
+<h4 id="GP数据类型"><a href="#GP数据类型" class="headerlink" title="GP数据类型"></a>GP数据类型</h4><table>
+    <tr>
+        <td></td>
+        <td>类型</td>
+        <td>存储空间</td>
+        <td>描述</td>
+        <td>范围</td>
+        <td>时间精度</td>
+    </tr>
+    <tr>
+        <td rowspan="9"> 数值</td>
+        <td>smallint</td>
+        <td>2字节</td>
+        <td>小范围整数</td>
+        <td>-32768 ~~~ +32768</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>integer</td>
+        <td>4字节</td>
+        <td>常用的整数</td>
+        <td>-2147483648 ~~~ +2147483647</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>bigint</td>
+        <td>8字节</td>
+        <td>大范围整数</td>
+        <td>-9223372036854775808 ~~~ ∞</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>decimal</td>
+        <td>变长</td>
+        <td>用户自定义精度,精确</td>
+        <td>无限制</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>numeric</td>
+        <td>变长</td>
+        <td>用户自定义精度,精确</td>
+        <td>无限制</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>real</td>
+        <td>4字节</td>
+        <td>变精度,不精确</td>
+        <td>6位十进制数字精度</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>double precision</td>
+        <td>8字节</td>
+        <td>变精度,不精确</td>
+        <td>15位十进制数字精度</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>serial</td>
+        <td>4字节</td>
+        <td>自增整数</td>
+        <td>1  ~~~ +2147483647</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>bigserial</td>
+        <td>8字节</td>
+        <td>大范围的自增整数</td>
+        <td>1  ~~~  +9223372036854775807</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td rowspan="3">字符</td>
+        <td>character varying(n) varchar(n)</td>
+        <td></td>
+        <td>变长,有长度限制</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>character(n) char(n)</td>
+        <td></td>
+        <td>定长,不足补空白</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>text</td>
+        <td></td>
+        <td>变长,无长度限制</td>
+        <td></td>
+        <td></td>
+    </tr>
+     <tr>
+        <td rowspan="6">时间</td>
+         <td>timestamp[(p)][without time zone]</td>
+        <td>8字节</td>
+        <td>日期和时间</td>
+        <td>4713BC  ~~~ 5874897AD</td>
+        <td>1毫秒</td>
+    </tr>
+    <tr>
+         <td>timestamp[(p)][with time zone]</td>
+        <td>8字节</td>
+        <td>日期和时间带时区</td>
+        <td>4713BC  ~~~ 5874897AD</td>
+        <td>1毫秒</td>
+    </tr>
+    <tr>
+         <td>interval[(p)]</td>
+        <td>12字节</td>
+        <td>时间间隔</td>
+        <td>-178000000年  ~~~  +178000000年</td>
+        <td>1毫秒</td>
+    </tr>
+    <tr>
+         <td>date</td>
+        <td>4字节</td>
+        <td>只用于表示日期</td>
+        <td>4713BC  ~~~ 5874897AD</td>
+        <td>1天</td>
+    </tr>
+    <tr>
+         <td>time[(p)][without time zone]</td>
+        <td>8字节</td>
+        <td>只用于表示一日内时间</td>
+        <td>0:00:00 ~~~ 24:00:00</td>
+        <td>1毫秒</td>
+    </tr>
+    <tr>
+         <td>time[(p)][with time zone]</td>
+        <td>12字节</td>
+        <td>只用于表示一日内时间带时区</td>
+        <td>0:00:00+1459 ~~~ 24:00:00-1459</td>
+        <td>1毫秒</td>
+    </tr>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
                 
             </div>
             <hr/>
@@ -448,7 +680,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://github.com/hfhzzdx/hfhzzdx/2022/05/04/%E8%B7%9F%E6%88%91%E4%B8%80%E8%B5%B7%E5%AD%A6Python/">https://github.com/hfhzzdx/hfhzzdx/2022/05/04/%E8%B7%9F%E6%88%91%E4%B8%80%E8%B5%B7%E5%AD%A6Python/</a>
+                    <a href="https://github.com/hfhzzdx/hfhzzdx/2022/05/08/GreenPlum%E7%AE%80%E4%BB%8B/">https://github.com/hfhzzdx/hfhzzdx/2022/05/08/GreenPlum%E7%AE%80%E4%BB%8B/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -485,7 +717,15 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/hfhzzdx/tags/GreenPlum/">
+                                    <span class="chip bg-color">GreenPlum</span>
+                                </a>
+                            
+                                <a href="/hfhzzdx/tags/GP/">
+                                    <span class="chip bg-color">GP</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -531,29 +771,88 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/hfhzzdx/2022/05/05/Linux%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E6%89%8B%E5%86%8C/">
+                <a href="/hfhzzdx/2022/05/08/GreenPlum%E7%AE%80%E4%BB%8B/">
                     <div class="card-image">
                         
                         
-                        <img src="/hfhzzdx/medias/featureimages/2.jpg" class="responsive-img" alt="Linux命令速查手册">
+                        <img src="/hfhzzdx/medias/featureimages/14.jpg" class="responsive-img" alt="GreenPlum简介">
                         
-                        <span class="card-title">Linux命令速查手册</span>
+                        <span class="card-title">GreenPlum简介</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            系统信息
+                            
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-05
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-09
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/hfhzzdx/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
+                                </a>
+                            
+                            <a href="/hfhzzdx/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/GP/" class="post-category">
+                                    GP
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/hfhzzdx/tags/GreenPlum/">
+                        <span class="chip bg-color">GreenPlum</span>
+                    </a>
+                    
+                    <a href="/hfhzzdx/tags/GP/">
+                        <span class="chip bg-color">GP</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/hfhzzdx/2022/05/06/CentOS-RHEL-Linux%E5%AE%89%E8%A3%85EPEL%E7%AC%AC%E4%B8%89%E6%96%B9%E8%BD%AF%E4%BB%B6%E6%BA%90/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/hfhzzdx/medias/featureimages/15.jpg" class="responsive-img" alt="CentOS/RHEL Linux安装EPEL第三方软件源">
+                        
+                        <span class="card-title">CentOS/RHEL Linux安装EPEL第三方软件源</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            EPEL（Extra Packages for Enterprise Linux） 是由 Fedora 社区打造，为 RHEL 及衍生发行版如 CentOS等提供高质量软件包的项目。装上了 EPEL，就像在 Fedora 上一样，可以通过 
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-07
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -577,49 +876,7 @@
                         <span class="chip bg-color">Linux</span>
                     </a>
                     
-                    <a href="/hfhzzdx/tags/%E5%91%BD%E4%BB%A4/">
-                        <span class="chip bg-color">命令</span>
-                    </a>
-                    
                 </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/hfhzzdx/2022/05/04/%E8%B7%9F%E6%88%91%E4%B8%80%E8%B5%B7%E5%AD%A6Python/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/hfhzzdx/medias/featureimages/7.jpg" class="responsive-img" alt="跟我一起学Python">
-                        
-                        <span class="card-title">跟我一起学Python</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-05
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            HFH
-                            
-                        </span>
-                    </div>
-                </div>
-
                 
             </div>
         </div>
