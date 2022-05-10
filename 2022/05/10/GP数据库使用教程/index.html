@@ -1,0 +1,1740 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="GP数据库使用教程, HFH">
+    <meta name="description" content="GP数据库使用教程一、操作语法1. 创建数据库[gpadmin@gpnode ~]$ psql 
+psql (9.4.24)
+Type &#34;help&#34; for help.
+
+gpdb=# \l
+                        ">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    
+
+    <title>GP数据库使用教程 | HFH</title>
+    <link rel="icon" type="image/png" href="/hfhzzdx/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/hfhzzdx/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/hfhzzdx/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/hfhzzdx/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/hfhzzdx/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/hfhzzdx/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/hfhzzdx/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/hfhzzdx/css/my.css">
+
+    <script src="/hfhzzdx/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/hfhzzdx/" class="waves-effect waves-light">
+                    
+                    <img src="/hfhzzdx/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">HFH</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/hfhzzdx/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/hfhzzdx/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/hfhzzdx/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/hfhzzdx/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/hfhzzdx/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/hfhzzdx/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">HFH</div>
+        <div class="logo-desc">
+            
+            我的博客系统
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/hfhzzdx/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/hfhzzdx/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/hfhzzdx/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/hfhzzdx/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/hfhzzdx/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/hfhzzdx/medias/featureimages/17.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">GP数据库使用教程</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/hfhzzdx/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/hfhzzdx/tags/GreenPlum/">
+                                <span class="chip bg-color">GreenPlum</span>
+                            </a>
+                        
+                            <a href="/hfhzzdx/tags/GP/">
+                                <span class="chip bg-color">GP</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/hfhzzdx/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                数据库
+                            </a>
+                        
+                            <a href="/hfhzzdx/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/GP/" class="post-category">
+                                GP
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-05-10
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/hfhzzdx/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="GP数据库使用教程"><a href="#GP数据库使用教程" class="headerlink" title="GP数据库使用教程"></a>GP数据库使用教程</h1><h2 id="一、操作语法"><a href="#一、操作语法" class="headerlink" title="一、操作语法"></a>一、操作语法</h2><h3 id="1-创建数据库"><a href="#1-创建数据库" class="headerlink" title="1. 创建数据库"></a>1. 创建数据库</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>gpadmin@gpnode ~<span class="token punctuation">]</span>$ psql 
+psql <span class="token punctuation">(</span><span class="token number">9.4</span>.24<span class="token punctuation">)</span>
+Type <span class="token string">"help"</span> <span class="token keyword">for</span> help.
+
+<span class="token assign-left variable">gpdb</span><span class="token operator">=</span><span class="token comment"># \l</span>
+                               List of databases
+   Name    <span class="token operator">|</span>  Owner  <span class="token operator">|</span> Encoding <span class="token operator">|</span>  Collate   <span class="token operator">|</span>   Ctype    <span class="token operator">|</span>  Access privileges  
+-----------+---------+----------+------------+------------+---------------------
+ gpdb      <span class="token operator">|</span> gpadmin <span class="token operator">|</span> UTF8     <span class="token operator">|</span> en_US.utf8 <span class="token operator">|</span> en_US.utf8 <span class="token operator">|</span> 
+ postgres  <span class="token operator">|</span> gpadmin <span class="token operator">|</span> UTF8     <span class="token operator">|</span> en_US.utf8 <span class="token operator">|</span> en_US.utf8 <span class="token operator">|</span> 
+ template0 <span class="token operator">|</span> gpadmin <span class="token operator">|</span> UTF8     <span class="token operator">|</span> en_US.utf8 <span class="token operator">|</span> en_US.utf8 <span class="token operator">|</span> <span class="token operator">=</span>c/gpadmin         +
+           <span class="token operator">|</span>         <span class="token operator">|</span>          <span class="token operator">|</span>            <span class="token operator">|</span>            <span class="token operator">|</span> <span class="token assign-left variable">gpadmin</span><span class="token operator">=</span>CTc/gpadmin
+ template1 <span class="token operator">|</span> gpadmin <span class="token operator">|</span> UTF8     <span class="token operator">|</span> en_US.utf8 <span class="token operator">|</span> en_US.utf8 <span class="token operator">|</span> <span class="token operator">=</span>c/gpadmin         +
+           <span class="token operator">|</span>         <span class="token operator">|</span>          <span class="token operator">|</span>            <span class="token operator">|</span>            <span class="token operator">|</span> <span class="token assign-left variable">gpadmin</span><span class="token operator">=</span>CTc/gpadmin
+<span class="token punctuation">(</span><span class="token number">4</span> rows<span class="token punctuation">)</span>
+
+<span class="token assign-left variable">gpdb</span><span class="token operator">=</span><span class="token comment"># \q</span>
+<span class="token punctuation">[</span>gpadmin@gpnode ~<span class="token punctuation">]</span>$       
+<span class="token comment">### 可以看到现在默认登录的数据库为gpdb</span>
+
+
+<span class="token punctuation">[</span>gpadmin@gpnode ~<span class="token punctuation">]</span>$ createdb  testDb -E utf-8         
+<span class="token comment"># 创建一个数据库,编码utf-8</span>
+<span class="token punctuation">[</span>gpadmin@gpnode ~<span class="token punctuation">]</span>$ <span class="token builtin class-name">export</span> <span class="token assign-left variable">PGDATABASE</span><span class="token operator">=</span>testDb
+<span class="token comment"># 修改默认database为新建的testDb</span>
+<span class="token punctuation">[</span>gpadmin@gpnode ~<span class="token punctuation">]</span>$ psql
+psql <span class="token punctuation">(</span><span class="token number">9.4</span>.24<span class="token punctuation">)</span>
+Type <span class="token string">"help"</span> <span class="token keyword">for</span> help.
+
+<span class="token assign-left variable">testDb</span><span class="token operator">=</span><span class="token comment"># \l</span>
+                               List of databases
+   Name    <span class="token operator">|</span>  Owner  <span class="token operator">|</span> Encoding <span class="token operator">|</span>  Collate   <span class="token operator">|</span>   Ctype    <span class="token operator">|</span>  Access privileges  
+-----------+---------+----------+------------+------------+---------------------
+ gpdb      <span class="token operator">|</span> gpadmin <span class="token operator">|</span> UTF8     <span class="token operator">|</span> en_US.utf8 <span class="token operator">|</span> en_US.utf8 <span class="token operator">|</span> 
+ postgres  <span class="token operator">|</span> gpadmin <span class="token operator">|</span> UTF8     <span class="token operator">|</span> en_US.utf8 <span class="token operator">|</span> en_US.utf8 <span class="token operator">|</span> 
+ template0 <span class="token operator">|</span> gpadmin <span class="token operator">|</span> UTF8     <span class="token operator">|</span> en_US.utf8 <span class="token operator">|</span> en_US.utf8 <span class="token operator">|</span> <span class="token operator">=</span>c/gpadmin         +
+           <span class="token operator">|</span>         <span class="token operator">|</span>          <span class="token operator">|</span>            <span class="token operator">|</span>            <span class="token operator">|</span> <span class="token assign-left variable">gpadmin</span><span class="token operator">=</span>CTc/gpadmin
+ template1 <span class="token operator">|</span> gpadmin <span class="token operator">|</span> UTF8     <span class="token operator">|</span> en_US.utf8 <span class="token operator">|</span> en_US.utf8 <span class="token operator">|</span> <span class="token operator">=</span>c/gpadmin         +
+           <span class="token operator">|</span>         <span class="token operator">|</span>          <span class="token operator">|</span>            <span class="token operator">|</span>            <span class="token operator">|</span> <span class="token assign-left variable">gpadmin</span><span class="token operator">=</span>CTc/gpadmin
+ testDb    <span class="token operator">|</span> gpadmin <span class="token operator">|</span> UTF8     <span class="token operator">|</span> en_US.utf8 <span class="token operator">|</span> en_US.utf8 <span class="token operator">|</span> 
+<span class="token punctuation">(</span><span class="token number">5</span> rows<span class="token punctuation">)</span>
+
+<span class="token assign-left variable">testDb</span><span class="token operator">=</span><span class="token comment"># </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="2-使用说明"><a href="#2-使用说明" class="headerlink" title="2. 使用说明"></a>2. 使用说明</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">testDb<span class="token operator">=</span><span class="token comment"># \h create view</span>
+Command:     <span class="token keyword">CREATE</span> <span class="token keyword">VIEW</span>
+Description: define a new <span class="token keyword">view</span>
+Syntax:
+<span class="token keyword">CREATE</span> <span class="token punctuation">[</span> <span class="token operator">OR</span> <span class="token keyword">REPLACE</span> <span class="token punctuation">]</span> <span class="token punctuation">[</span> <span class="token keyword">TEMP</span> <span class="token operator">|</span> <span class="token keyword">TEMPORARY</span> <span class="token punctuation">]</span> <span class="token punctuation">[</span> RECURSIVE <span class="token punctuation">]</span> <span class="token keyword">VIEW</span> name <span class="token punctuation">[</span> <span class="token punctuation">(</span> column_name <span class="token punctuation">[</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span> <span class="token punctuation">)</span> <span class="token punctuation">]</span>
+    <span class="token punctuation">[</span> <span class="token keyword">WITH</span> <span class="token punctuation">(</span> view_option_name <span class="token punctuation">[</span><span class="token operator">=</span> view_option_value<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">]</span> <span class="token punctuation">)</span> <span class="token punctuation">]</span>
+    <span class="token keyword">AS</span> query
+    <span class="token punctuation">[</span> <span class="token keyword">WITH</span> <span class="token punctuation">[</span> <span class="token keyword">CASCADED</span> <span class="token operator">|</span> <span class="token keyword">LOCAL</span> <span class="token punctuation">]</span> <span class="token keyword">CHECK</span> <span class="token keyword">OPTION</span> <span class="token punctuation">]</span>
+
+testDb<span class="token operator">=</span><span class="token comment"># \h create</span>
+Command:     <span class="token keyword">CREATE</span> AGGREGATE
+Description: define a new aggregate <span class="token keyword">function</span>
+Syntax:
+<span class="token keyword">CREATE</span> AGGREGATE name <span class="token punctuation">(</span> <span class="token punctuation">[</span> argmode <span class="token punctuation">]</span> <span class="token punctuation">[</span> argname <span class="token punctuation">]</span> arg_data_type <span class="token punctuation">[</span> <span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">]</span> <span class="token punctuation">)</span> <span class="token punctuation">(</span>
+    SFUNC <span class="token operator">=</span> sfunc<span class="token punctuation">,</span>
+    STYPE <span class="token operator">=</span> state_data_type
+    <span class="token punctuation">[</span> <span class="token punctuation">,</span> SSPACE <span class="token operator">=</span> state_data_size <span class="token punctuation">]</span>
+    <span class="token punctuation">[</span> <span class="token punctuation">,</span> FINALFUNC <span class="token operator">=</span> ffunc <span class="token punctuation">]</span>
+    <span class="token punctuation">[</span> <span class="token punctuation">,</span> FINALFUNC_EXTRA <span class="token punctuation">]</span>
+    <span class="token punctuation">[</span> <span class="token punctuation">,</span> COMBINEFUNC <span class="token operator">=</span> combinefunc <span class="token punctuation">]</span>
+    <span class="token punctuation">[</span> <span class="token punctuation">,</span> SERIALFUNC <span class="token operator">=</span> serialfunc <span class="token punctuation">]</span>
+    <span class="token punctuation">[</span> <span class="token punctuation">,</span> DESERIALFUNC <span class="token operator">=</span> deserialfunc <span class="token punctuation">]</span>
+    <span class="token punctuation">[</span> <span class="token punctuation">,</span> INITCOND <span class="token operator">=</span> initial_condition <span class="token punctuation">]</span>
+    <span class="token punctuation">[</span> <span class="token punctuation">,</span> MSFUNC <span class="token operator">=</span> msfunc <span class="token punctuation">]</span>
+    <span class="token punctuation">[</span> <span class="token punctuation">,</span> MINVFUNC <span class="token operator">=</span> minvfunc <span class="token punctuation">]</span>
+    <span class="token punctuation">[</span> <span class="token punctuation">,</span> MSTYPE <span class="token operator">=</span> mstate_data_type <span class="token punctuation">]</span>
+    <span class="token punctuation">[</span> <span class="token punctuation">,</span> MSSPACE <span class="token operator">=</span> mstate_data_size <span class="token punctuation">]</span>
+    <span class="token punctuation">[</span> <span class="token punctuation">,</span> MFINALFUNC <span class="token operator">=</span> mffunc <span class="token punctuation">]</span>
+    <span class="token punctuation">[</span> <span class="token punctuation">,</span> MFINALFUNC_EXTRA <span class="token punctuation">]</span>
+    <span class="token punctuation">[</span> <span class="token punctuation">,</span> MINITCOND <span class="token operator">=</span> minitial_condition <span class="token punctuation">]</span>
+    <span class="token punctuation">[</span> <span class="token punctuation">,</span> SORTOP <span class="token operator">=</span> sort_operator <span class="token punctuation">]</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">CREATE</span> AGGREGATE name <span class="token punctuation">(</span> <span class="token punctuation">[</span> <span class="token punctuation">[</span> argmode <span class="token punctuation">]</span> <span class="token punctuation">[</span> argname <span class="token punctuation">]</span> arg_data_type <span class="token punctuation">[</span> <span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">]</span> <span class="token punctuation">]</span>
+                        <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> <span class="token punctuation">[</span> argmode <span class="token punctuation">]</span> <span class="token punctuation">[</span> argname <span class="token punctuation">]</span> arg_data_type <span class="token punctuation">[</span> <span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">]</span> <span class="token punctuation">)</span> <span class="token punctuation">(</span>
+    SFUNC <span class="token operator">=</span> sfunc<span class="token punctuation">,</span>
+    STYPE <span class="token operator">=</span> state_data_type
+    <span class="token punctuation">[</span> <span class="token punctuation">,</span> SSPACE <span class="token operator">=</span> state_data_size <span class="token punctuation">]</span>
+    <span class="token punctuation">[</span> <span class="token punctuation">,</span> FINALFUNC <span class="token operator">=</span> ffunc <span class="token punctuation">]</span>
+    <span class="token punctuation">[</span> <span class="token punctuation">,</span> FINALFUNC_EXTRA <span class="token punctuation">]</span>
+    <span class="token punctuation">[</span> <span class="token punctuation">,</span> COMBINEFUNC <span class="token operator">=</span> combinefunc <span class="token punctuation">]</span>
+    <span class="token punctuation">[</span> <span class="token punctuation">,</span> SERIALFUNC <span class="token operator">=</span> serialfunc <span class="token punctuation">]</span>
+    <span class="token punctuation">[</span> <span class="token punctuation">,</span> DESERIALFUNC <span class="token operator">=</span> deserialfunc <span class="token punctuation">]</span>
+    <span class="token punctuation">[</span> <span class="token punctuation">,</span> INITCOND <span class="token operator">=</span> initial_condition <span class="token punctuation">]</span>
+    <span class="token punctuation">[</span> <span class="token punctuation">,</span> HYPOTHETICAL <span class="token punctuation">]</span>
+<span class="token punctuation">)</span>
+testDb<span class="token operator">=</span><span class="token comment"># </span>
+
+<span class="token comment">-- \h查询帮助信息,后面跟需要查询的语句或语法</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="3-建表语句"><a href="#3-建表语句" class="headerlink" title="3. 建表语句"></a>3. 建表语句</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">testDb<span class="token operator">=</span><span class="token comment"># create table test001(id int,name varchar(128));           --id 为分布键</span>
+NOTICE:  <span class="token keyword">Table</span> doesn<span class="token string">'t have '</span><span class="token keyword">DISTRIBUTED</span> <span class="token keyword">BY</span><span class="token string">' clause -- Using column named '</span>id<span class="token string">' as the Greenplum Database data distribution key for this table.
+HINT:  The '</span><span class="token keyword">DISTRIBUTED</span> <span class="token keyword">BY</span><span class="token string">' clause determines the distribution of data. Make sure column(s) chosen are the optimal data distribution key to minimize skew.
+CREATE TABLE
+
+
+testDb=# \d
+              List of relations
+ Schema |  Name   | Type  |  Owner  | Storage 
+--------+---------+-------+---------+---------
+ public | test001 | table | gpadmin | heap
+(1 row)
+
+
+testDb=# create table test002(id int ,name varchar(128)) distributed by(id);    -- id为分布键
+CREATE TABLE
+testDb=# 
+
+
+testDb=# create table test003(id int ,name varchar(128)) distributed by(id,name);  --id和name为复合分布键
+CREATE TABLE
+testDb=# 
+
+testDb=# create table test004(id int ,name varchar(128)) distributed randomly;   --使用随机分布
+CREATE TABLE
+testDb=# 
+
+testDb=# create table testlike(like test001);                     -- 创建一模一样的表
+NOTICE:  table doesn'</span>t have <span class="token string">'DISTRIBUTED BY'</span> clause<span class="token punctuation">,</span> defaulting <span class="token keyword">to</span> distribution <span class="token keyword">columns</span> <span class="token keyword">from</span> <span class="token operator">LIKE</span> <span class="token keyword">table</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span>
+testDb<span class="token operator">=</span><span class="token comment">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="4-插入语句"><a href="#4-插入语句" class="headerlink" title="4. 插入语句"></a>4. 插入语句</h3><p><strong>执行insert语句注意分布键不要为空,否则分布键默认变成null’,数据都被保存到一个节点上会导致分布不均</strong></p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">testDb<span class="token operator">=</span><span class="token comment"># insert into test001 values (100,'tom'),(101,'lily'),(102,'jack'),(103,'linda');</span>
+<span class="token keyword">INSERT</span> <span class="token number">0</span> <span class="token number">4</span>
+
+testDb<span class="token operator">=</span><span class="token comment"># insert into test002 values (200,'tom'),(101,'lily'),(202,'jack'),(103,'linda');</span>
+<span class="token keyword">INSERT</span> <span class="token number">0</span> <span class="token number">4</span>
+testDb<span class="token operator">=</span><span class="token comment"># </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="5-更新语句"><a href="#5-更新语句" class="headerlink" title="5. 更新语句"></a>5. 更新语句</h3><p><strong>不能<font color=red>批量</font>对分布键执行update,因为分布键执行update需要将数据重分布.</strong></p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">update</span> test002 <span class="token keyword">set</span> id<span class="token operator">=</span><span class="token number">203</span> <span class="token keyword">where</span> id<span class="token operator">=</span><span class="token number">202</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="6-删除"><a href="#6-删除" class="headerlink" title="6. 删除"></a>6. 删除</h3><p>delete 删除整张表比较慢,所以建议使用truncate</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">testDb<span class="token operator">=</span><span class="token comment"># truncate table test002;</span>
+<span class="token keyword">TRUNCATE</span> <span class="token keyword">TABLE</span>
+testDb<span class="token operator">=</span><span class="token comment"># select * from test002;</span>
+ id <span class="token operator">|</span> name 
+<span class="token comment">----+------</span>
+<span class="token punctuation">(</span><span class="token number">0</span> <span class="token keyword">rows</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="7-查询语句"><a href="#7-查询语句" class="headerlink" title="7. 查询语句"></a>7. 查询语句</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">testDb<span class="token operator">=</span><span class="token comment"># select * from test001;</span>
+ id  <span class="token operator">|</span> name  
+<span class="token comment">-----+-------</span>
+ <span class="token number">100</span> <span class="token operator">|</span> tom
+ <span class="token number">101</span> <span class="token operator">|</span> lily
+ <span class="token number">102</span> <span class="token operator">|</span> jack
+ <span class="token number">103</span> <span class="token operator">|</span> linda
+<span class="token punctuation">(</span><span class="token number">4</span> <span class="token keyword">rows</span><span class="token punctuation">)</span>
+
+testDb<span class="token operator">=</span><span class="token comment"># </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="8-执行计划"><a href="#8-执行计划" class="headerlink" title="8 执行计划"></a>8 执行计划</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">testDb<span class="token operator">=</span><span class="token comment"># select * from test001 x, test002 y where x.id=y.id;</span>
+ id  <span class="token operator">|</span> name  <span class="token operator">|</span> id  <span class="token operator">|</span> name  
+<span class="token comment">-----+-------+-----+-------</span>
+ <span class="token number">101</span> <span class="token operator">|</span> lily  <span class="token operator">|</span> <span class="token number">101</span> <span class="token operator">|</span> lily
+ <span class="token number">103</span> <span class="token operator">|</span> linda <span class="token operator">|</span> <span class="token number">103</span> <span class="token operator">|</span> linda
+<span class="token punctuation">(</span><span class="token number">2</span> <span class="token keyword">rows</span><span class="token punctuation">)</span>
+
+testDb<span class="token operator">=</span><span class="token comment"># explain select * from test001 x, test002  y where x.id=y.id;</span>
+                                  QUERY <span class="token keyword">PLAN</span>                                   
+<span class="token comment">-------------------------------------------------------------------------------</span>
+ Gather Motion <span class="token number">4</span>:<span class="token number">1</span>  <span class="token punctuation">(</span>slice1<span class="token punctuation">;</span> segments: <span class="token number">4</span><span class="token punctuation">)</span>  <span class="token punctuation">(</span>cost<span class="token operator">=</span><span class="token number">0.00</span><span class="token punctuation">.</span><span class="token number">.862</span><span class="token number">.00</span> <span class="token keyword">rows</span><span class="token operator">=</span><span class="token number">5</span> width<span class="token operator">=</span><span class="token number">18</span><span class="token punctuation">)</span>
+   <span class="token operator">-</span><span class="token operator">></span>  <span class="token keyword">Hash</span> <span class="token keyword">Join</span>  <span class="token punctuation">(</span>cost<span class="token operator">=</span><span class="token number">0.00</span><span class="token punctuation">.</span><span class="token number">.862</span><span class="token number">.00</span> <span class="token keyword">rows</span><span class="token operator">=</span><span class="token number">2</span> width<span class="token operator">=</span><span class="token number">18</span><span class="token punctuation">)</span>
+         <span class="token keyword">Hash</span> Cond: <span class="token punctuation">(</span>test001<span class="token punctuation">.</span>id <span class="token operator">=</span> test002<span class="token punctuation">.</span>id<span class="token punctuation">)</span>
+         <span class="token operator">-</span><span class="token operator">></span>  Seq Scan <span class="token keyword">on</span> test001  <span class="token punctuation">(</span>cost<span class="token operator">=</span><span class="token number">0.00</span><span class="token punctuation">.</span><span class="token number">.431</span><span class="token number">.00</span> <span class="token keyword">rows</span><span class="token operator">=</span><span class="token number">1</span> width<span class="token operator">=</span><span class="token number">9</span><span class="token punctuation">)</span>
+         <span class="token operator">-</span><span class="token operator">></span>  <span class="token keyword">Hash</span>  <span class="token punctuation">(</span>cost<span class="token operator">=</span><span class="token number">431.00</span><span class="token punctuation">.</span><span class="token number">.431</span><span class="token number">.00</span> <span class="token keyword">rows</span><span class="token operator">=</span><span class="token number">1</span> width<span class="token operator">=</span><span class="token number">9</span><span class="token punctuation">)</span>
+               <span class="token operator">-</span><span class="token operator">></span>  Seq Scan <span class="token keyword">on</span> test002  <span class="token punctuation">(</span>cost<span class="token operator">=</span><span class="token number">0.00</span><span class="token punctuation">.</span><span class="token number">.431</span><span class="token number">.00</span> <span class="token keyword">rows</span><span class="token operator">=</span><span class="token number">1</span> width<span class="token operator">=</span><span class="token number">9</span><span class="token punctuation">)</span>
+ Optimizer: Pivotal Optimizer <span class="token punctuation">(</span>GPORCA<span class="token punctuation">)</span> version <span class="token number">3.85</span><span class="token number">.0</span>
+<span class="token punctuation">(</span><span class="token number">7</span> <span class="token keyword">rows</span><span class="token punctuation">)</span>
+
+testDb<span class="token operator">=</span><span class="token comment"># </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="二、常用数据类型"><a href="#二、常用数据类型" class="headerlink" title="二、常用数据类型"></a>二、常用数据类型</h2><table>
+    <tr>
+        <td></td>
+        <td>类型</td>
+        <td>存储空间</td>
+        <td>描述</td>
+        <td>范围</td>
+        <td>时间精度</td>
+    </tr>
+    <tr>
+        <td rowspan="9"> 数值</td>
+        <td>smallint</td>
+        <td>2字节</td>
+        <td>小范围整数</td>
+        <td>-32768 ~~~ +32768</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>integer</td>
+        <td>4字节</td>
+        <td>常用的整数</td>
+        <td>-2147483648 ~~~ +2147483647</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>bigint</td>
+        <td>8字节</td>
+        <td>大范围整数</td>
+        <td>-9223372036854775808 ~~~ ∞</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>decimal</td>
+        <td>变长</td>
+        <td>用户自定义精度,精确</td>
+        <td>无限制</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>numeric</td>
+        <td>变长</td>
+        <td>用户自定义精度,精确</td>
+        <td>无限制</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>real</td>
+        <td>4字节</td>
+        <td>变精度,不精确</td>
+        <td>6位十进制数字精度</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>double precision</td>
+        <td>8字节</td>
+        <td>变精度,不精确</td>
+        <td>15位十进制数字精度</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>serial</td>
+        <td>4字节</td>
+        <td>自增整数</td>
+        <td>1  ~~~ +2147483647</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>bigserial</td>
+        <td>8字节</td>
+        <td>大范围的自增整数</td>
+        <td>1  ~~~  +9223372036854775807</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td rowspan="3">字符</td>
+        <td>character varying(n) varchar(n)</td>
+        <td></td>
+        <td>变长,有长度限制</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>character(n) char(n)</td>
+        <td></td>
+        <td>定长,不足补空白</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>text</td>
+        <td></td>
+        <td>变长,无长度限制</td>
+        <td></td>
+        <td></td>
+    </tr>
+     <tr>
+        <td rowspan="6">时间</td>
+         <td>timestamp[(p)][without time zone]</td>
+        <td>8字节</td>
+        <td>日期和时间</td>
+        <td>4713BC  ~~~ 5874897AD</td>
+        <td>1毫秒</td>
+    </tr>
+    <tr>
+         <td>timestamp[(p)][with time zone]</td>
+        <td>8字节</td>
+        <td>日期和时间带时区</td>
+        <td>4713BC  ~~~ 5874897AD</td>
+        <td>1毫秒</td>
+    </tr>
+    <tr>
+         <td>interval[(p)]</td>
+        <td>12字节</td>
+        <td>时间间隔</td>
+        <td>-178000000年  ~~~  +178000000年</td>
+        <td>1毫秒</td>
+    </tr>
+    <tr>
+         <td>date</td>
+        <td>4字节</td>
+        <td>只用于表示日期</td>
+        <td>4713BC  ~~~ 5874897AD</td>
+        <td>1天</td>
+    </tr>
+    <tr>
+         <td>time[(p)][without time zone]</td>
+        <td>8字节</td>
+        <td>只用于表示一日内时间</td>
+        <td>0:00:00 ~~~ 24:00:00</td>
+        <td>1毫秒</td>
+    </tr>
+    <tr>
+         <td>time[(p)][with time zone]</td>
+        <td>12字节</td>
+        <td>只用于表示一日内时间带时区</td>
+        <td>0:00:00+1459 ~~~ 24:00:00-1459</td>
+        <td>1毫秒</td>
+    </tr>
+</table>
+
+<h2 id="三、常用函数"><a href="#三、常用函数" class="headerlink" title="三、常用函数"></a>三、常用函数</h2><h3 id="1-字符串常用函数"><a href="#1-字符串常用函数" class="headerlink" title="1. 字符串常用函数"></a>1. <a target="_blank" rel="noopener" href="https://www.postgresql.org/docs/9.4/functions-string.html">字符串常用函数</a></h3><table>
+<thead>
+<tr>
+<th align="left">函数</th>
+<th align="left">返回类型</th>
+<th align="left">描述</th>
+<th align="left">例子</th>
+<th align="left">结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">string || string</td>
+<td align="left">text</td>
+<td align="left">字符串连接</td>
+<td align="left">‘aa’ || ‘bb’</td>
+<td align="left">aabb</td>
+</tr>
+<tr>
+<td align="left">length(string)</td>
+<td align="left">int</td>
+<td align="left">string中字符的数目</td>
+<td align="left">length(‘aaa’)</td>
+<td align="left">3</td>
+</tr>
+<tr>
+<td align="left">position(substring in string)</td>
+<td align="left">int</td>
+<td align="left">指定的子字符串的位置</td>
+<td align="left">position(‘om’ in ‘Thomas’)</td>
+<td align="left">3</td>
+</tr>
+<tr>
+<td align="left">substring(string [from int] [for int])</td>
+<td align="left">text</td>
+<td align="left">抽取子字符串</td>
+<td align="left">substring(‘Thomas’ from 2 to 3)</td>
+<td align="left">hom</td>
+</tr>
+<tr>
+<td align="left">trim([leading|trailing|both] [characters] from string)</td>
+<td align="left">text</td>
+<td align="left">从字符串string的开头&#x2F;结尾&#x2F;两边删除只包含characters中字符(默认是一个空白)的最长的字符串</td>
+<td align="left">trim(both ‘x’ from ‘xTomxx’)</td>
+<td align="left">Tom</td>
+</tr>
+<tr>
+<td align="left">lower(string)</td>
+<td align="left">text</td>
+<td align="left">字符串转小写</td>
+<td align="left">lower(‘TOM’)</td>
+<td align="left">tom</td>
+</tr>
+<tr>
+<td align="left">upper(string)</td>
+<td align="left">text</td>
+<td align="left">字符串转大写</td>
+<td align="left">upper(‘tom’)</td>
+<td align="left">TOM</td>
+</tr>
+<tr>
+<td align="left">overlay(string placing string from int [for int])</td>
+<td align="left">text</td>
+<td align="left">替换字符串</td>
+<td align="left">overlay(‘Txxxxas’ placing ‘hom’ from 2 for 4)</td>
+<td align="left">Thomas</td>
+</tr>
+<tr>
+<td align="left">replace(string text,from tesxt, to text)</td>
+<td align="left">text</td>
+<td align="left">把字符串string中出现的所有子字符串from替换成子字符串to</td>
+<td align="left">replace(‘abcdefabcdef’, ‘cd’, ‘XX’)</td>
+<td align="left">abXXefabXXef</td>
+</tr>
+<tr>
+<td align="left">split_part(string text, delimiter text, field int)</td>
+<td align="left">text</td>
+<td align="left">根据delimiter分割字符串返回生成的第field个子字符串(1为基准)</td>
+<td align="left">split_part(‘abc|def|ghi’, ‘|’, 2)</td>
+<td align="left">def</td>
+</tr>
+</tbody></table>
+<h3 id="2-时间函数"><a href="#2-时间函数" class="headerlink" title="2. 时间函数"></a>2. 时间函数</h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>返回类型</th>
+<th>描述</th>
+<th>例子</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>age(timestamp, timestamp)</td>
+<td>interval</td>
+<td>减去参数后的”符号化”结果</td>
+<td>age(timestamp’2001-04-10’, timestamp’1957-06-13’</td>
+<td>43 years 9 mons 27 days</td>
+</tr>
+<tr>
+<td>age(timstamp)</td>
+<td>interval</td>
+<td>从current_date减去参数中的日期</td>
+<td>age(timestamp’1957-06-13’)</td>
+<td>64 years 10 mons 27 days</td>
+</tr>
+<tr>
+<td>current_date</td>
+<td>date</td>
+<td>当前的日期</td>
+<td></td>
+<td>2022-05-10</td>
+</tr>
+<tr>
+<td>current_time</td>
+<td>time with time zone  (timetz)</td>
+<td>当日时间</td>
+<td></td>
+<td>16:57:43.65079+08</td>
+</tr>
+<tr>
+<td>current_timestamp</td>
+<td>timestamp with time zone (now)</td>
+<td>当前事务开始的时间戳</td>
+<td></td>
+<td>2022-05-10 16:59:24.739026+08</td>
+</tr>
+<tr>
+<td>date_part(text,timestamp)</td>
+<td>double precision</td>
+<td>获取子域(等效于extract)</td>
+<td>date_part(‘hour’,timestamp’2001-02-16 20:38:40’)</td>
+<td>20</td>
+</tr>
+<tr>
+<td>date_trunc(text, timestamp)</td>
+<td>timestamp</td>
+<td>截断成指定的精度</td>
+<td>date_trunc(‘hour’, timestamp’2001-02-16 20:38:40’)</td>
+<td>2001-02-16 20:00:00</td>
+</tr>
+<tr>
+<td>extract(field from timestamp)</td>
+<td>double precision</td>
+<td>获取子域</td>
+<td>extract(‘hour’ from timestamp’2001-02-16 20:38:40’)</td>
+<td>20</td>
+</tr>
+<tr>
+<td>now()</td>
+<td>timestamp with time zone</td>
+<td>当前事务开始的时间戳</td>
+<td></td>
+<td>2022-05-10 17:06:23.463615+08</td>
+</tr>
+</tbody></table>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">testDb<span class="token operator">=</span><span class="token comment"># SELECT now(),current_date,current_time,current_timestamp;</span>
+              now              <span class="token operator">|</span>    <span class="token keyword">date</span>    <span class="token operator">|</span>       timetz       <span class="token operator">|</span>              now              
+<span class="token comment">-------------------------------+------------+--------------------+-------------------------------</span>
+ <span class="token number">2022</span><span class="token operator">-</span><span class="token number">05</span><span class="token operator">-</span><span class="token number">10</span> <span class="token number">17</span>:<span class="token number">06</span>:<span class="token number">59.955076</span><span class="token operator">+</span><span class="token number">08</span> <span class="token operator">|</span> <span class="token number">2022</span><span class="token operator">-</span><span class="token number">05</span><span class="token operator">-</span><span class="token number">10</span> <span class="token operator">|</span> <span class="token number">17</span>:<span class="token number">06</span>:<span class="token number">59.955076</span><span class="token operator">+</span><span class="token number">08</span> <span class="token operator">|</span> <span class="token number">2022</span><span class="token operator">-</span><span class="token number">05</span><span class="token operator">-</span><span class="token number">10</span> <span class="token number">17</span>:<span class="token number">06</span>:<span class="token number">59.955076</span><span class="token operator">+</span><span class="token number">08</span>
+<span class="token punctuation">(</span><span class="token number">1</span> <span class="token keyword">row</span><span class="token punctuation">)</span>
+
+testDb<span class="token operator">=</span><span class="token comment"># select current_timestamp(0);</span>
+      timestamptz       
+<span class="token comment">------------------------</span>
+ <span class="token number">2022</span><span class="token operator">-</span><span class="token number">05</span><span class="token operator">-</span><span class="token number">10</span> <span class="token number">17</span>:<span class="token number">07</span>:<span class="token number">11</span><span class="token operator">+</span><span class="token number">08</span>
+<span class="token punctuation">(</span><span class="token number">1</span> <span class="token keyword">row</span><span class="token punctuation">)</span>
+
+testDb<span class="token operator">=</span><span class="token comment"># select current_timestamp(0)::timestamp;</span>
+      <span class="token keyword">timestamp</span>      
+<span class="token comment">---------------------</span>
+ <span class="token number">2022</span><span class="token operator">-</span><span class="token number">05</span><span class="token operator">-</span><span class="token number">10</span> <span class="token number">17</span>:<span class="token number">07</span>:<span class="token number">30</span>
+<span class="token punctuation">(</span><span class="token number">1</span> <span class="token keyword">row</span><span class="token punctuation">)</span>
+
+testDb<span class="token operator">=</span><span class="token comment">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="其他函数"><a href="#其他函数" class="headerlink" title="其他函数"></a>其他函数</h2><h3 id="序列号生成函数-generate-series"><a href="#序列号生成函数-generate-series" class="headerlink" title="序列号生成函数    generate_series"></a>序列号生成函数    generate_series</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">testDb<span class="token operator">=</span><span class="token comment"># select * from generate_series(6,9)</span>
+testDb<span class="token operator">-</span><span class="token comment"># ;</span>
+ generate_series 
+<span class="token comment">-----------------</span>
+               <span class="token number">6</span>
+               <span class="token number">7</span>
+               <span class="token number">8</span>
+               <span class="token number">9</span>
+<span class="token punctuation">(</span><span class="token number">4</span> <span class="token keyword">rows</span><span class="token punctuation">)</span>
+
+<span class="token comment">-- 语法: generate_series(x,y,t) </span>
+<span class="token comment">-- 生成多行数据从x到另外y，步长为t，默认是1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="字符串列转行-string-agg"><a href="#字符串列转行-string-agg" class="headerlink" title="字符串列转行   string_agg"></a>字符串列转行   string_agg</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">string_agg<span class="token punctuation">(</span>str<span class="token punctuation">,</span>symbol <span class="token punctuation">[</span><span class="token keyword">order</span> <span class="token keyword">by</span> str<span class="token punctuation">]</span><span class="token punctuation">)</span>
+（按照某字段排序）将str列转行，以symbol分隔<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">testDb<span class="token operator">=</span><span class="token comment"># select * from test001;</span>
+ id  <span class="token operator">|</span> name  
+<span class="token comment">-----+-------</span>
+ <span class="token number">100</span> <span class="token operator">|</span> tom
+ <span class="token number">100</span> <span class="token operator">|</span> jack
+ <span class="token number">101</span> <span class="token operator">|</span> lily
+ <span class="token number">102</span> <span class="token operator">|</span> jack
+ <span class="token number">103</span> <span class="token operator">|</span> linda
+<span class="token punctuation">(</span><span class="token number">5</span> <span class="token keyword">rows</span><span class="token punctuation">)</span>
+
+testDb<span class="token operator">=</span><span class="token comment"># select id,string_agg(name,'|') as res from test001 group by id;</span>
+ id  <span class="token operator">|</span>   res    
+<span class="token comment">-----+----------</span>
+ <span class="token number">100</span> <span class="token operator">|</span> tom<span class="token operator">|</span>jack
+ <span class="token number">101</span> <span class="token operator">|</span> lily
+ <span class="token number">102</span> <span class="token operator">|</span> jack
+ <span class="token number">103</span> <span class="token operator">|</span> linda
+<span class="token punctuation">(</span><span class="token number">4</span> <span class="token keyword">rows</span><span class="token punctuation">)</span>
+
+
+testDb<span class="token operator">=</span><span class="token comment"># select id,string_agg(name,'|' order by name desc) as res from test001 group by id;</span>
+ id  <span class="token operator">|</span>   res    
+<span class="token comment">-----+----------</span>
+ <span class="token number">101</span> <span class="token operator">|</span> lily
+ <span class="token number">102</span> <span class="token operator">|</span> jack
+ <span class="token number">103</span> <span class="token operator">|</span> linda
+ <span class="token number">100</span> <span class="token operator">|</span> tom<span class="token operator">|</span>jack
+<span class="token punctuation">(</span><span class="token number">4</span> <span class="token keyword">rows</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="字符串行转列-regexp-split-to-table-array"><a href="#字符串行转列-regexp-split-to-table-array" class="headerlink" title="字符串行转列  regexp_split_to_table|array"></a>字符串行转列  regexp_split_to_table|array</h3><blockquote>
+<pre class="line-numbers language-none"><code class="language-none">把转成行的数据变成列数据<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</blockquote>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">testDb<span class="token operator">=</span><span class="token comment"># select regexp_split_to_table('a,b,c',',');</span>
+ regexp_split_to_table 
+<span class="token comment">-----------------------</span>
+ a
+ b
+ c
+<span class="token punctuation">(</span><span class="token number">3</span> <span class="token keyword">rows</span><span class="token punctuation">)</span>
+
+testDb<span class="token operator">=</span><span class="token comment"># select regexp_split_to_table('/home/work/pg.sh','\/');</span>
+ regexp_split_to_table 
+<span class="token comment">-----------------------</span>
+ 
+ home
+ <span class="token keyword">work</span>
+ pg<span class="token punctuation">.</span>sh
+<span class="token punctuation">(</span><span class="token number">4</span> <span class="token keyword">rows</span><span class="token punctuation">)</span>
+
+testDb<span class="token operator">=</span><span class="token comment"># select regexp_split_to_table(coalesce('/home/work/pg.sh',''),E'\/');</span>
+ regexp_split_to_table 
+<span class="token comment">-----------------------</span>
+ 
+ home
+ <span class="token keyword">work</span>
+ pg<span class="token punctuation">.</span>sh
+<span class="token punctuation">(</span><span class="token number">4</span> <span class="token keyword">rows</span><span class="token punctuation">)</span>
+
+testDb<span class="token operator">=</span><span class="token comment">#     </span>
+  <span class="token comment">-- regexp_split_to_array</span>
+
+testDb<span class="token operator">=</span><span class="token comment"># select regexp_split_to_array('a,b,c',',');</span>
+ regexp_split_to_array 
+<span class="token comment">-----------------------</span>
+ &#123;a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c&#125;
+<span class="token punctuation">(</span><span class="token number">1</span> <span class="token keyword">row</span><span class="token punctuation">)</span>
+
+testDb<span class="token operator">=</span><span class="token comment"># select regexp_split_to_array('/home/work/pg.sh','\/');</span>
+ regexp_split_to_array 
+<span class="token comment">-----------------------</span>
+ &#123;<span class="token string">""</span><span class="token punctuation">,</span>home<span class="token punctuation">,</span><span class="token keyword">work</span><span class="token punctuation">,</span>pg<span class="token punctuation">.</span>sh&#125;
+<span class="token punctuation">(</span><span class="token number">1</span> <span class="token keyword">row</span><span class="token punctuation">)</span>
+
+testDb<span class="token operator">=</span><span class="token comment"># select regexp_split_to_array(coalesce('/home/work/pg.sh',''),E'\/');</span>
+ regexp_split_to_array 
+<span class="token comment">-----------------------</span>
+ &#123;<span class="token string">""</span><span class="token punctuation">,</span>home<span class="token punctuation">,</span><span class="token keyword">work</span><span class="token punctuation">,</span>pg<span class="token punctuation">.</span>sh&#125;
+<span class="token punctuation">(</span><span class="token number">1</span> <span class="token keyword">row</span><span class="token punctuation">)</span>
+
+testDb<span class="token operator">=</span><span class="token comment">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/hfhzzdx/about" rel="external nofollow noreferrer">HFH</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://github.com/hfhzzdx/hfhzzdx/2022/05/10/GP%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">https://github.com/hfhzzdx/hfhzzdx/2022/05/10/GP%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/hfhzzdx/about" target="_blank">HFH</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/hfhzzdx/tags/GreenPlum/">
+                                    <span class="chip bg-color">GreenPlum</span>
+                                </a>
+                            
+                                <a href="/hfhzzdx/tags/GP/">
+                                    <span class="chip bg-color">GP</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/hfhzzdx/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/hfhzzdx/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/hfhzzdx/2022/05/10/GreenPlum%E8%8E%B7%E5%8F%96table%E3%80%81schema%E5%8F%8A%E5%85%B6database%E5%A4%A7%E5%B0%8F/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/hfhzzdx/medias/featureimages/1.jpg" class="responsive-img" alt="GreenPlum获取table、schema及其database大小">
+                        
+                        <span class="card-title">GreenPlum获取table、schema及其database大小</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-10
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/hfhzzdx/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
+                                </a>
+                            
+                            <a href="/hfhzzdx/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/gp/" class="post-category">
+                                    gp
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/hfhzzdx/tags/GreenPlum/">
+                        <span class="chip bg-color">GreenPlum</span>
+                    </a>
+                    
+                    <a href="/hfhzzdx/tags/GP/">
+                        <span class="chip bg-color">GP</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/hfhzzdx/2022/05/09/GreenPlum%E5%8D%95%E8%8A%82%E7%82%B9%E5%AE%89%E8%A3%85/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/hfhzzdx/medias/featureimages/17.jpg" class="responsive-img" alt="GreenPlum单节点安装">
+                        
+                        <span class="card-title">GreenPlum单节点安装</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-10
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/hfhzzdx/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
+                                </a>
+                            
+                            <a href="/hfhzzdx/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/GP/" class="post-category">
+                                    GP
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/hfhzzdx/tags/GreenPlum/">
+                        <span class="chip bg-color">GreenPlum</span>
+                    </a>
+                    
+                    <a href="/hfhzzdx/tags/GP/">
+                        <span class="chip bg-color">GP</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: HFH<br />'
+            + '文章作者: HFH<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/hfhzzdx/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/hfhzzdx/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/hfhzzdx/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/hfhzzdx/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/hfhzzdx/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2022</span>
+            
+            <a href="/hfhzzdx/about" target="_blank">HFH</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+                <span id="sitetime"> Loading ...</span>
+                <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2022";
+                        var startMonth = "5";
+                        var startDate = "5";
+                        var startHour = "0";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                        // 区分是否有年份.
+                        var language = 'zh-CN';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:hfhzzdx@hotmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2065334747" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2065334747" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/hfhzzdx/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/hfhzzdx/libs/materialize/materialize.min.js"></script>
+    <script src="/hfhzzdx/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/hfhzzdx/libs/aos/aos.js"></script>
+    <script src="/hfhzzdx/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/hfhzzdx/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/hfhzzdx/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/hfhzzdx/libs/others/snow.js"><\/script>');
+            }
+        </script>
+    
+
+    <!-- 鼠标星星特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/hfhzzdx/libs/others/star.js"><\/script>');
+            }
+        </script>
+    
+
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/hfhzzdx/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/hfhzzdx/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/hfhzzdx/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
